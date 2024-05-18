@@ -22,7 +22,7 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal px-1">
                         <li><Link to={`generatekey`}>Generate Key</Link></li>
                         <li><Link to={`encrypt`}>Encrypt</Link></li>
-                        <li><Link to={`decrypt`}>Encrypt</Link></li>
+                        <li><Link to={`decrypt`}>Decrypt</Link></li>
                     </ul>
                 </div>
             </div>

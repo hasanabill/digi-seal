@@ -34,43 +34,62 @@ const Encrypt = () => {
     };
 
     return (
-        <div>
-            <h3>Encrypt Message</h3>
-            <textarea
-                value={plainText}
-                onChange={(e) => setPlainText(e.target.value)}
-                placeholder="Enter message"
-                rows="5"
-                cols="50"
-            ></textarea>
-            <div>
-                <h3>Receivers Public Key</h3>
-                <textarea
-                    value={receiverPublicKey}
-                    onChange={(e) => setReceiverPublicKey(e.target.value)}
-                    placeholder="Enter receiver's public key"
-                    rows="5"
-                    cols="50"
-                ></textarea>
-                <input type="file" className="file-input file-input-bordered" onChange={(e) => uploadKey(e, 'public')} />
+        <div className="container mx-auto p-4">
+
+            <h3 className="text-2xl font-bold mb-4">Encrypt Message</h3>
+
+            <div className="grid grid-cols-2 gap-4">
+
+                <div className="mb-4">
+                    <h3 className="text-lg font-bold mb-2">Message</h3>
+                    <textarea
+                        className="textarea textarea-bordered w-full mb-2"
+                        value={plainText}
+                        onChange={(e) => setPlainText(e.target.value)}
+                        placeholder="Enter message"
+                        rows="5"
+                    ></textarea>
+                    <button className="btn btn-info w-1/3 mb-4" onClick={encryptMessage}>Encrypt</button>
+                </div>
+
+                <div className="mb-4">
+                    <h3 className="text-lg font-bold mb-2">Receiver&apos;s Public Key</h3>
+                    <textarea
+                        className="textarea textarea-bordered w-full mb-2"
+                        value={receiverPublicKey}
+                        onChange={(e) => setReceiverPublicKey(e.target.value)}
+                        placeholder="Enter receiver's public key"
+                        rows="5"
+                    ></textarea>
+                    <input type="file" className="file-input file-input-bordered w-full" onChange={(e) => uploadKey(e, 'public')} />
+                </div>
+
+                <div>
+                    <h3 className="text-lg font-bold mb-2">Encrypted Message</h3>
+                    <textarea
+                        className="textarea textarea-bordered w-full"
+                        value={encryptedText}
+                        readOnly
+                        rows="5"
+                    ></textarea>
+                </div>
+
+                <div className="mb-4">
+                    <h3 className="text-lg font-bold mb-2">Sender&apos;s Private Key</h3>
+                    <textarea
+                        className="textarea textarea-bordered w-full mb-2"
+                        value={senderPrivateKey}
+                        onChange={(e) => setSenderPrivateKey(e.target.value)}
+                        placeholder="Enter your private key"
+                        rows="5"
+                    ></textarea>
+                    <input type="file" className="file-input file-input-bordered w-full" onChange={(e) => uploadKey(e, 'private')} />
+                </div>
+
             </div>
-            <div>
-                <h3>Senders Private Key</h3>
-                <textarea
-                    value={senderPrivateKey}
-                    onChange={(e) => setSenderPrivateKey(e.target.value)}
-                    placeholder="Enter your private key"
-                    rows="5"
-                    cols="50"
-                ></textarea>
-                <input type="file" className="file-input file-input-bordered" onChange={(e) => uploadKey(e, 'private')} />
-            </div>
-            <button onClick={encryptMessage}>Encrypt</button>
-            <div>
-                <h3>Encrypted Message</h3>
-                <textarea value={encryptedText} readOnly rows="5" cols="50"></textarea>
-            </div>
+
         </div>
+
     );
 };
 

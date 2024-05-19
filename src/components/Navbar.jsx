@@ -16,7 +16,7 @@ const Navbar = () => {
                             <li><Link to={`decrypt`}>Encrypt</Link></li>
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-4xl font-bold">digi-seal</a>
+                    <Link to='/' className="btn btn-ghost text-4xl font-bold">Digi Seal</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

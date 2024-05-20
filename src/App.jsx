@@ -5,7 +5,6 @@ export const KeyContext = React.createContext();
 function App() {
   return (
     <div className=' mx-auto'>
-
       <Outlet />
     </div>
   )

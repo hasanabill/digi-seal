@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 const Navbar = () => {
     return (
         <>
-            <div className="navbar bg-base-100">
+            <div className="navbar fixed opacity-50 bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -20,9 +20,9 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li><Link to={`generatekey`}>Generate Key</Link></li>
-                        <li><Link to={`encrypt`}>Encrypt</Link></li>
-                        <li><Link to={`decrypt`}>Decrypt</Link></li>
+                        <li><Link to={`/generatekey`}>Generate Key</Link></li>
+                        <li><Link to={`/encrypt`}>Encrypt</Link></li>
+                        <li><Link to={`/decrypt`}>Decrypt</Link></li>
                     </ul>
                 </div>
             </div>

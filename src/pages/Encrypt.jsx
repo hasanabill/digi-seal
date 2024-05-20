@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { JSEncrypt } from 'jsencrypt';
 import CryptoJS from 'crypto-js';
+import Navbar from '../components/Navbar';
+import hero from '../assets/hero.jpg'
 
 const Encrypt = () => {
     const [receiverPublicKey, setReceiverPublicKey] = useState('');
@@ -34,61 +36,66 @@ const Encrypt = () => {
     };
 
     return (
-        <div className="container mx-auto p-4">
+        <>
+            <Navbar />
+            <div className="hero min-h-screen" style={{ backgroundImage: `url(${hero})` }}>
+                <div className="container mx-auto p-4">
 
-            <h3 className="text-2xl font-bold mb-4">Encrypt Message</h3>
+                    <h3 className="text-2xl font-bold mb-4 text-white">Encrypt Message</h3>
 
-            <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-4">
 
-                <div className="mb-4">
-                    <h3 className="text-lg font-bold mb-2">Message</h3>
-                    <textarea
-                        className="textarea textarea-bordered w-full mb-2"
-                        value={plainText}
-                        onChange={(e) => setPlainText(e.target.value)}
-                        placeholder="Enter message"
-                        rows="5"
-                    ></textarea>
-                    <button className="btn btn-info w-1/3 mb-4" onClick={encryptMessage}>Encrypt</button>
+                        <div className="mb-4">
+                            <h3 className="text-lg font-bold mb-2 text-white">Message</h3>
+                            <textarea
+                                className="textarea textarea-bordered w-full mb-2 opacity-60"
+                                value={plainText}
+                                onChange={(e) => setPlainText(e.target.value)}
+                                placeholder="Enter message"
+                                rows="5"
+                            ></textarea>
+                            <button className="btn btn-info w-1/3 mb-4" onClick={encryptMessage}>Encrypt</button>
+                        </div>
+
+                        <div className="mb-4">
+                            <h3 className="text-lg font-bold mb-2 text-white">Receiver&apos;s Public Key</h3>
+                            <textarea
+                                className="textarea textarea-bordered w-full mb-2 opacity-60"
+                                value={receiverPublicKey}
+                                onChange={(e) => setReceiverPublicKey(e.target.value)}
+                                placeholder="Enter receiver's public key"
+                                rows="5"
+                            ></textarea>
+                            <input type="file" className="file-input file-input-bordered w-full bg-slate-500 text-white" onChange={(e) => uploadKey(e, 'public')} />
+                        </div>
+
+                        <div>
+                            <h3 className="text-lg font-bold mb-2 text-white">Encrypted Message</h3>
+                            <textarea
+                                className="textarea textarea-bordered w-full opacity-60"
+                                value={encryptedText}
+                                readOnly
+                                rows="5"
+                            ></textarea>
+                        </div>
+
+                        <div className="mb-4">
+                            <h3 className="text-lg font-bold mb-2 text-white" >Sender&apos;s Private Key</h3>
+                            <textarea
+                                className="textarea textarea-bordered w-full mb-2 opacity-60"
+                                value={senderPrivateKey}
+                                onChange={(e) => setSenderPrivateKey(e.target.value)}
+                                placeholder="Enter your private key"
+                                rows="5"
+                            ></textarea>
+                            <input type="file" className="file-input file-input-bordered w-full bg-slate-500 text-white" onChange={(e) => uploadKey(e, 'private')} />
+                        </div>
+
+                    </div>
+
                 </div>
-
-                <div className="mb-4">
-                    <h3 className="text-lg font-bold mb-2">Receiver&apos;s Public Key</h3>
-                    <textarea
-                        className="textarea textarea-bordered w-full mb-2"
-                        value={receiverPublicKey}
-                        onChange={(e) => setReceiverPublicKey(e.target.value)}
-                        placeholder="Enter receiver's public key"
-                        rows="5"
-                    ></textarea>
-                    <input type="file" className="file-input file-input-bordered w-full" onChange={(e) => uploadKey(e, 'public')} />
-                </div>
-
-                <div>
-                    <h3 className="text-lg font-bold mb-2">Encrypted Message</h3>
-                    <textarea
-                        className="textarea textarea-bordered w-full"
-                        value={encryptedText}
-                        readOnly
-                        rows="5"
-                    ></textarea>
-                </div>
-
-                <div className="mb-4">
-                    <h3 className="text-lg font-bold mb-2">Sender&apos;s Private Key</h3>
-                    <textarea
-                        className="textarea textarea-bordered w-full mb-2"
-                        value={senderPrivateKey}
-                        onChange={(e) => setSenderPrivateKey(e.target.value)}
-                        placeholder="Enter your private key"
-                        rows="5"
-                    ></textarea>
-                    <input type="file" className="file-input file-input-bordered w-full" onChange={(e) => uploadKey(e, 'private')} />
-                </div>
-
             </div>
-
-        </div>
+        </>
 
     );
 };
